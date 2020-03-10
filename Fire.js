@@ -57,6 +57,7 @@ class Fire {
     appendUser = user => this.refUser.push(user)
     
     parse = snapshot => {
+        console.log('dsadsa')
         const { timestamp: numberStamp, text, user } = snapshot.val();
         const { key: _id } = snapshot;
         const timestamp = new Date(numberStamp);
