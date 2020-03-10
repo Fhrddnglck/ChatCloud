@@ -3,7 +3,7 @@ import { View, Text, Button, ImageBackground, Image } from 'react-native'
 import { GiftedChat } from 'react-native-gifted-chat'
 import Fire from '../../Fire'
 
-
+var userNamem = ''
 class ChatScreen extends React.Component {
 
     static navigationOptions = ({ navigation }) => ({
@@ -17,6 +17,7 @@ class ChatScreen extends React.Component {
     get user() {
         return {
             _id: Fire.shared.uid,
+            name: userNamem
         };
     }
 
@@ -37,13 +38,13 @@ class ChatScreen extends React.Component {
 
     componentDidMount() {
         const route = this.props.route
-        const { radioChoose } = route.params
-        console.log(radioChoose)
-        Fire.shared.on(message =>
+        const { radioChoose,userName } = route.params
+        userNamem = userName
+        Fire.shared.on(radioChoose,(message) =>{
             this.setState(previousState => ({
                 messages: GiftedChat.append(previousState.messages, message),
             }))
-        );
+        })
     }
     componentWillUnmount() {
         Fire.shared.offMessages();

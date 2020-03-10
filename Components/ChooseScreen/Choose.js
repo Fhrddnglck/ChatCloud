@@ -39,6 +39,8 @@ class Choose extends React.Component {
     }
     render() {
         const navigation = this.props.navigation
+        const route = this.props.route
+        const { userName } = route.params
         return (
             <ImageBackground source={require('../../src/BACKGROUND.png')} resizeMode='cover' style={{ width: '100%', height: '100%' }}>
                 <View
@@ -49,7 +51,7 @@ class Choose extends React.Component {
                     </View>
                     <View style={{ width: '100%', alignItems: 'center' }}>
                         <TouchableOpacity
-                        onPress = {()=>navigation.navigate('Chat',{radioChoose:this.state.currentChoose})}
+                        onPress = {()=>navigation.navigate('Chat',{radioChoose:this.state.currentChoose,userName : userName})}
                             style={{ backgroundColor: '#35D467', width: '50%', height: 49, alignItems: 'center', justifyContent: 'center', borderRadius: 180 }}>
                             <Text style={{ fontWeight: 'bold', fontSize: 24, color: 'white' }}>START</Text>
                         </TouchableOpacity>

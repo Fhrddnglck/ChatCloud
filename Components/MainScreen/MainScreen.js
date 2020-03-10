@@ -14,6 +14,10 @@ import { Icon } from 'react-native-elements'
 
 
 class App extends React.Component {
+    state = {
+        userName : ''
+    }
+
     render() {
         const navigation = this.props.navigation
         return (
@@ -34,10 +38,11 @@ class App extends React.Component {
                         <TextInput
                             style={{ width: '70%', marginLeft: 'auto' }}
                             placeholder='Jack'
+                            onChangeText = {(value)=>this.setState({userName:value})}
                         />
                     </View>
                     <TouchableOpacity
-                    onPress = {()=>navigation.navigate('Choose')}
+                    onPress = {()=>navigation.navigate('Choose',{userName : this.state.userName})}
                         style={styles.goChatButton}>
                         <Text style={{ padding: 8, color: '#B29292', fontWeight: 'bold', marginLeft: 16, marginTop: 4, fontSize: 16 }}>GO TO CHAT</Text>
                         <View style={{ marginLeft: 'auto', justifyContent: 'center', width: 50 }}>
